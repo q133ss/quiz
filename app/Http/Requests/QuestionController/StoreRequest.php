@@ -27,6 +27,7 @@ class StoreRequest extends FormRequest
             'img.*'  => 'nullable|file',
             'answ_text.*'  => 'nullable|string',
             'next_question_id.*'  => 'nullable|string',
+            'required' => 'nullable|string'
         ];
     }
 

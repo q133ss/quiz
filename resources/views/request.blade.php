@@ -22,7 +22,18 @@
                             @foreach($item->getAnswers() as $answer)
                             <li style="display: flex; justify-content: space-between">
                                 <span>{{$answer['question']}}</span>
-                                <span>{{$answer['answer']}}</span>
+                                @if(is_array($answer['answer']))
+                                    <span>
+                                    @foreach($answer['answer'] as $answ)
+                                        {{$answ}}
+                                            @if(!$loop->last)
+                                                ,
+                                            @endif
+                                    @endforeach
+                                    </span>
+                                @else
+                                    <span>{{$answer['answer']}}</span>
+                                @endif
                             </li>
                             @endforeach
                         </ul>

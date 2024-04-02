@@ -15,6 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('phone');
             $table->json('answers');
+
+            $table->string('region');
+            $table->string('date');
+            $table->string('additional');
+            $table->string('network_type');
             $table->timestamps();
         });
     }

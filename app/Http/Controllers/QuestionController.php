@@ -28,7 +28,8 @@ class QuestionController extends Controller
         DB::transaction(function() use ($request) {
             $questionData = [
                 'text' => $request->text,
-                'order' => Question::orderBy('order','DESC')->pluck('order')->first() + 1
+                'order' => Question::orderBy('order','DESC')->pluck('order')->first() + 1,
+                'required' => $request->required == null ? false : true
             ];
 
             $question = Question::create($questionData);
@@ -74,7 +75,7 @@ class QuestionController extends Controller
         DB::transaction(function() use ($request, $id) {
             $questionData = [
                 'text' => $request->text,
-                'order' => Question::orderBy('order','DESC')->pluck('order')->first() + 1
+                'required' => $request->required == null ? false : true
             ];
 
             $question = Question::findOrFail($id)->update($questionData);

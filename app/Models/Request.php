@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 
 class Request extends Model
 {
@@ -17,10 +18,21 @@ class Request extends Model
         $items = [];
 
         foreach ($data as $quest => $answer){
-            $items[] = [
-                'question' => Question::find($quest)->text,
-                'answer' => Answer::find($answer)->text,
-            ];
+            if(Answer::find($answer) instanceof Collection){
+                $answers = [];
+                foreach (Answer::whereIn('id',$answer)->get() as $answ){
+                    $answers[] = $answ->text;
+                }
+                $items[] = [
+                    'question' => Question::find($quest)->text,
+                    'answer' => $answers,
+                ];
+            }else {
+                $items[] = [
+                    'question' => Question::find($quest)->text,
+                    'answer' => Answer::find($answer)->text,
+                ];
+            }
         }
 
         return $items;

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('text');
             $table->integer('order')->default(0);
+            $table->boolean('required')->default(true);
             $table->timestamps();
         });
     }

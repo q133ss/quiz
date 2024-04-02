@@ -34,10 +34,18 @@
                                 </select>
                             </div>
 
+                            <div class="form-check">
+                                <input class="form-check-input" name="required" type="checkbox" value="on" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    Обязательный вопрос
+                                </label>
+                            </div>
+
                             <div class="d-flex justify-content-between mt-2 mb-2">
                                 <h4>Ответы</h4>
                                 <button class="btn btn-primary" type="button" onclick="addAnswer()">Добавить ответ</button>
                             </div>
+
                             <div id="answers">
                                 @if(old('answ_text'))
                                     @php $count = 99999; @endphp

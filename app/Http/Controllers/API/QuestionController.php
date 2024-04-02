@@ -35,7 +35,11 @@ class QuestionController extends Controller
 
         \App\Models\Request::create([
             'phone' => $request->phone,
-            'answers' => json_encode($answers)
+            'answers' => json_encode($answers),
+            'region' => $request->region,
+            'date' => $request->date,
+            'additional' => $request->additional,
+            'network_type' => $request->network_type
         ]);
 
         return Response()->json(['message' => true], 201);

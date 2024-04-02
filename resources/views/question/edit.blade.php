@@ -35,6 +35,13 @@
                                 </select>
                             </div>
 
+                            <div class="form-check">
+                                <input class="form-check-input" @if($question->required == true) checked @endif name="required" type="checkbox" value="on" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    Обязательный вопрос
+                                </label>
+                            </div>
+
                             <div class="d-flex justify-content-between mt-2 mb-2">
                                 <h4>Ответы</h4>
                                 <button class="btn btn-primary" type="button" onclick="addAnswer()">Добавить ответ</button>
@@ -72,7 +79,7 @@
                                 @endif
                             </div>
 
-                            <button type="submit" class="btn btn-primary mt-2">Добавить вопрос</button>
+                            <button type="submit" class="btn btn-primary mt-2">Изменить вопрос</button>
                         </form>
                     </div>
                 </div>

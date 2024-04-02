@@ -24,7 +24,11 @@ class StoreRequestRequest extends FormRequest
         return [
             'phone' => 'min:11|required|string',
             'questions' => 'array|required',
-            'answers' => 'array|required'
+            'answers' => 'array|required',
+            'region' => 'string|required',
+            'date' => 'string|required',
+            'additional' => 'string|required',
+            'network_type' => 'string|required',
         ];
     }
 
@@ -33,7 +37,12 @@ class StoreRequestRequest extends FormRequest
         return [
             'phone.min' => 'Неверный формат телефона',
             'phone.required' => 'Введите телефон',
-            'phone.string' => 'Телефон должен быть строкой'
+            'phone.string' => 'Телефон должен быть строкой',
+
+            'region.required' => 'Укажите регион',
+            'date.required' => 'Укажите срок',
+            'additional.required' => 'Укажите доп. услуги',
+            'network_type' => 'Выберите тип связи'
         ];
     }
 }
