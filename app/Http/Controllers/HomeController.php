@@ -34,4 +34,16 @@ class HomeController extends Controller
         }
         return response('Сортировка обновлена успешно', 200);
     }
+
+    public function requests()
+    {
+        $requests = \App\Models\Request::orderBy('created_at', 'DESC')->get();
+        return view('requests', compact('requests'));
+    }
+
+    public function requestShow(string $id)
+    {
+        $item = \App\Models\Request::findOrFail($id);
+        return view('request', compact('item'));
+    }
 }

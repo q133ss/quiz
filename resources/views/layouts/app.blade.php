@@ -30,7 +30,8 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-
+                        <li><a href="/">Вопросы</a></li>
+                        <li class="p-2 pt-0 pb-0"><a href="{{route('requests')}}">Заявки</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
