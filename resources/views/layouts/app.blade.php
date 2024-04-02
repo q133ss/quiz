@@ -39,13 +39,7 @@
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('login') }}">Вход</a>
                                 </li>
                             @endif
                         @else
@@ -73,6 +67,15 @@
         </nav>
 
         <main class="py-4">
+            @if(session()->has('success'))
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="alert alert-success">
+                            {{ session()->get('success') }}
+                        </div>
+                    </div>
+                </div>
+            @endif
             @yield('content')
         </main>
     </div>

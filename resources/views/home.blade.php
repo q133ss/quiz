@@ -11,9 +11,13 @@
                         @foreach($questions as $item)
                             <li id="item_{{ $item->id }}" style="display: flex; justify-content: space-between">
                                 {{ $item->text }}
-                                <div class="ctrl">
+                                <div class="ctrl d-flex align-items-center gap-2">
                                     <a href="{{route('question.edit', $item->id)}}">Изменить</a>
-                                    <a href="/delete">Удалить</a>
+                                    <form action="{{route('question.destroy', $item->id)}}" class="d-inline" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-link p-0">Удалить</button>
+                                    </form>
                                 </div>
                             </li>
                         @endforeach
