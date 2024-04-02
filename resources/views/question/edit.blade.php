@@ -51,6 +51,7 @@
                                     @php $count = 99999; @endphp
                                     @foreach($question->answers as $k => $answer)
                                         @php $count++; @endphp
+                                        <input type="hidden" name="answ_id[]" value="{{$answer->id}}">
                                         <div class="border mt-2 p-2" id="answ_{{$count}}">
                                             <div class="form-group">
                                                 <label for="img">Картинка</label>

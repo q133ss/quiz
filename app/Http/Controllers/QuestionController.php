@@ -81,25 +81,22 @@ class QuestionController extends Controller
             $question = Question::findOrFail($id)->update($questionData);
 
             if($request->answ_text) {
-                foreach (Answer::where('question_id', $id)->get() as $answ){
-                    Storage::disk('public')->delete(str_replace(config('app.url').'/storage/', '', $answ->img));
-                    $answ->delete();
-                }
-
                 foreach ($request->answ_text as $k => $text) {
                     if ($text != null) {
+                        $id = $request->answ_id[$k];
+                        $answ = Answer::find($id);
+
                         $data = [
                             'text' => $text,
                             'next_question_id' => $request->next_question_id[$k],
-                            'question_id' => $id,
                             'type' => $request->type,
                         ];
 
                         if (isset($request->file('img')[$k])) {
+                            Storage::disk('public')->delete(str_replace(config('app.url').'/storage/', '', $answ->img));
                             $data['img'] = config('app.url') . '/storage/' . $request->file('img')[$k]->store('img', 'public');
                         }
-
-                        Answer::create($data);
+                        $answ->update($data);
                     }
                 }
             }
